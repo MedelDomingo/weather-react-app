@@ -1,0 +1,11 @@
+form {
+  display: flex;
+  input {
+    width: 300px;
+    padding: 15px;
+    border-radius: 5px;
+    outline: 0;
+    border: 0;
+    transition: ease all 0.3s;
+  }
+}
