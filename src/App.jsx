@@ -4,7 +4,14 @@ import Form from "./components/Form";
 function App() {
   return (
     <>
-      <Form />
+      <div className="main-wrapper">
+        <section className="form-details__wrapper">
+          <Form />
+        </section>
+        <aside>
+          <img src="#" alt="Weather icon" />
+        </aside>
+      </div>
     </>
   );
 }

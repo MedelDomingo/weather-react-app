@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "./Form.scss";
+
+import GetWeatherIcons from "../utils/GetWeatherIcons";
 import Input from "./Input";
 import Button from "./Button";
+import Card from "./Card";
+
+import { CiSearch } from "react-icons/ci";
+import "./Form.scss";
 
 const Form = () => {
   const [locationInput, setLocationInput] = useState("");
@@ -13,14 +18,23 @@ const Form = () => {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${
         import.meta.env.VITE_APP_ID
       }&units=metric`;
+
       const res = await fetch(url);
       const data = await res.json();
       console.log(data);
       setWeatherDetails({
-        humidity: data.main.humidity,
-        windSpeed: data.wind.speed,
+        //Location names
         locationName: data.name,
         temperature: Math.floor(data.main.temp),
+
+        // Cards details
+        humidity: data.main.humidity,
+        windSpeed: data.wind.speed,
+        feelsLike: data.main.feels_like,
+
+        //Weather details
+        icon: data.weather[0].icon,
+        description: data.weather[0].description,
       });
     } catch (err) {
       console.log("No fetch API:", err);
@@ -49,14 +63,20 @@ const Form = () => {
           onChange={onChangeHandler}
           value={locationInput}
         />
-        <Button buttonText="Search" type="submit" />
+        <Button buttonText={<CiSearch />} type="submit" />
       </form>
-      <h1>{weatherDetails.locationName}</h1>
-      <h2>Humidity: {weatherDetails.humidity}</h2>
-      <h2>Wind Speed: {weatherDetails.windSpeed}</h2>
-      <h2>
-        {weatherDetails.temperature} <span>°C</span>
-      </h2>
+      {weatherDetails && (
+        <Card
+          locationName={weatherDetails.locationName}
+          icon={weatherDetails.icon}
+          description={weatherDetails.description}
+          temperature={weatherDetails.temperature}
+          feelsLike={weatherDetails.feelsLike}
+          humidity={weatherDetails.humidity}
+          windspeed={weatherDetails.windSpeed}
+          weatherIcon={<GetWeatherIcons iconCode={weatherDetails.icon} />}
+        />
+      )}
     </>
   );
 };
