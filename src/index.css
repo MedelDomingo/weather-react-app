@@ -5,6 +5,11 @@
   font-weight: 300;
 }
 
+input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -16,13 +21,28 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
-  min-width: 320px;
   min-height: 100vh;
-  background-image: url("./assets//img/bg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: hsla(214, 92%, 47%, 1);
+  background: linear-gradient(
+    90deg,
+    hsla(214, 92%, 47%, 1) 0%,
+    hsla(231, 85%, 24%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(214, 92%, 47%, 1) 0%,
+    hsla(231, 85%, 24%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(214, 92%, 47%, 1) 0%,
+    hsla(231, 85%, 24%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0968E5", endColorstr="#091970", GradientType=1 );
 }
 
 h1 {

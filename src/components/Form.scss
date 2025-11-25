@@ -1,11 +1,56 @@
-form {
-  display: flex;
-  input {
-    width: 300px;
-    padding: 15px;
-    border-radius: 5px;
-    outline: 0;
-    border: 0;
-    transition: ease all 0.3s;
+.form-details__wrapper {
+  padding: 0 30px;
+  background: hsl(0deg 0% 100% / 18%);
+  backdrop-filter: blur(6px);
+  align-items: center;
+  display: grid;
+  align-content: center;
+  .form-inner__wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+    form {
+      position: relative;
+      input {
+        width: 100%;
+        padding: 15px;
+        border-radius: 5px;
+        outline: 0;
+        border: 0;
+        transition: ease all 0.3s;
+      }
+      button {
+        position: absolute;
+        right: 10px;
+        background: 0;
+        top: 13px;
+        padding: 0;
+        font-size: 24px;
+        color: #000;
+        border: 0;
+        &:hover,
+        &:focus,
+        &:focus-visible,
+        &:active {
+          transition: border-color 0.3s ease-in-out;
+          stroke: unset;
+          outline: 0;
+          border: 0;
+        }
+      }
+    }
+  }
+}
+.weather-current__wrapper {
+  display: none;
+  font-size: 300px;
+  color: #fff;
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (min-width: 1200px) {
+    font-size: 400px;
   }
 }

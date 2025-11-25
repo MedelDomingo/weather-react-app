@@ -1,0 +1,34 @@
+.card-wrapper {
+  color: #fff;
+  h1 {
+    font-weight: 300;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+.card-details__wrapper {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  .w-temperature {
+    font-size: 90px;
+    span {
+      font-size: 40px;
+    }
+  }
+  .w-description {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    span {
+      font-size: 70px;
+    }
+  }
+}
+
+.error-note {
+  text-align: center;
+  color: #fff;
+  margin-top: 30px;
+}

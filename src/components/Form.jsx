@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
-import "./Form.scss";
+
+import GetWeatherIcons from "../utils/GetWeatherIcons";
+import { FiEyeOff } from "react-icons/fi";
 import Input from "./Input";
 import Button from "./Button";
+import Card from "./Card";
 
-const Form = () => {
+import { CiSearch } from "react-icons/ci";
+import "./Form.scss";
+
+const Form = (props) => {
   const [locationInput, setLocationInput] = useState("");
+  const [locationFound, setLocationFound] = useState(true);
   const [weatherDetails, setWeatherDetails] = useState("");
   const [locationTitle, setLocationTitle] = useState("Manila");
 
@@ -13,17 +20,34 @@ const Form = () => {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${
         import.meta.env.VITE_APP_ID
       }&units=metric`;
+
       const res = await fetch(url);
       const data = await res.json();
       console.log(data);
+
       setWeatherDetails({
-        humidity: data.main.humidity,
-        windSpeed: data.wind.speed,
+        //Location names
         locationName: data.name,
         temperature: Math.floor(data.main.temp),
+
+        // Cards details
+        humidity: data.main.humidity,
+        windSpeed: data.wind.speed,
+        feelsLike: data.main.feels_like,
+
+        //Weather details
+        icon: data.weather[0].icon,
+        description: data.weather[0].description,
+
+        // Time Stamp
+        timeZone: data.timezone,
+        timeStamp: data.dt,
       });
+
+      setLocationFound(true);
     } catch (err) {
-      console.log("No fetch API:", err);
+      setLocationFound(false);
+      console.log("No location Found:", err);
     }
   };
 
@@ -42,21 +66,40 @@ const Form = () => {
 
   return (
     <>
-      <form onSubmit={submitHandler}>
-        <Input
-          type="text"
-          placeholder="Enter location (e.g., Metro)"
-          onChange={onChangeHandler}
-          value={locationInput}
-        />
-        <Button buttonText="Search" type="submit" />
-      </form>
-      <h1>{weatherDetails.locationName}</h1>
-      <h2>Humidity: {weatherDetails.humidity}</h2>
-      <h2>Wind Speed: {weatherDetails.windSpeed}</h2>
-      <h2>
-        {weatherDetails.temperature} <span>°C</span>
-      </h2>
+      <div className="form-details__wrapper">
+        <div className="form-inner__wrapper">
+          <form onSubmit={submitHandler}>
+            <Input
+              type="text"
+              placeholder="Search Location..."
+              onChange={onChangeHandler}
+              value={locationInput}
+            />
+            <Button buttonText={<CiSearch />} type="submit" />
+          </form>
+          {locationFound ? (
+            <Card
+              locationName={weatherDetails.locationName}
+              icon={weatherDetails.icon}
+              description={weatherDetails.description}
+              temperature={weatherDetails.temperature}
+              feelsLike={weatherDetails.feelsLike}
+              humidity={weatherDetails.humidity}
+              windspeed={weatherDetails.windSpeed}
+              weatherIcon={<GetWeatherIcons iconCode={weatherDetails.icon} />}
+            />
+          ) : (
+            <p className="error-note">Location not found.</p>
+          )}
+        </div>
+      </div>
+      <div className="weather-current__wrapper">
+        {locationFound ? (
+          <GetWeatherIcons iconCode={weatherDetails.icon} />
+        ) : (
+          <FiEyeOff />
+        )}
+      </div>
     </>
   );
 };

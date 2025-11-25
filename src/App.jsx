@@ -1,12 +1,14 @@
 import "./App.css";
 import Form from "./components/Form";
 
-function App() {
+const App = () => {
   return (
     <>
-      <Form />
+      <div className="main-wrapper">
+        <Form />
+      </div>
     </>
   );
-}
+};
 
 export default App;
