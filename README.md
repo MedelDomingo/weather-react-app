@@ -1,7 +1,7 @@
 ## Weather Application
 App that gets weather information of a city or country base on https://openweathermap.org/api
 
-# Screenshot
+## Screenshot
 <img width="1881" height="939" alt="image" src="https://github.com/user-attachments/assets/2adae87e-1666-4d7a-bece-52f547fe96eb" />
 
 #### Features
