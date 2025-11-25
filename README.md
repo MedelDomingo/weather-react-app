@@ -1,17 +1,36 @@
-# React + Vite
+## Weather Application
+App that gets weather information of a city or country base on https://openweathermap.org/api
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Screenshot
+<img width="1881" height="939" alt="image" src="https://github.com/user-attachments/assets/2adae87e-1666-4d7a-bece-52f547fe96eb" />
 
-Currently, two official plugins are available:
+#### Features
+- Add location
+- View Temperature, Humidity, Wind Speed, Feels Like and Weather condition
+- Responsive design using SCSS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### Technologies
+- ReactJS
+- JavaScript (ES6+)
 
-## React Compiler
+#### Installation
+1. Clone the repository:
+```bash
+git clone git@github.com:MedelDomingo/weather-react-app.git
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. Clone the repository:
+```bash
+cd weather-react-app
+```
 
-## Expanding the ESLint configuration
+3. Install dependencies:
+```bash
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# weather-react-app
+4. Run the development server:
+```bash
+npm run dev
+```
+
