@@ -1,19 +1,14 @@
 import "./App.css";
 import Form from "./components/Form";
 
-function App() {
+const App = () => {
   return (
     <>
       <div className="main-wrapper">
-        <section className="form-details__wrapper">
-          <Form />
-        </section>
-        <aside>
-          <img src="#" alt="Weather icon" />
-        </aside>
+        <Form />
       </div>
     </>
   );
-}
+};
 
 export default App;

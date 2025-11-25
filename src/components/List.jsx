@@ -4,6 +4,7 @@ import "./List.scss";
 const List = (props) => {
   return (
     <li>
+      <span className="icon">{props.icon}</span>
       <span>{props.label}</span>
       {props.overcast}
     </li>
